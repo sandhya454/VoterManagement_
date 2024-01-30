@@ -6,6 +6,7 @@ import Dashboard from './assets/Components/MainPage/Dashboard/Dashboard'
 import Users from './assets/Components/MainPage/Users/Users'
 import Booths from './assets/Components/MainPage/Booths/Booths'
 import Reports from './assets/Components/MainPage/Reports.jsx/Reports'
+import Page from './assets/Components/MainPage/Page/page'
 
 
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='users' element={<Users/>}/>
           <Route path='booths' element={<Booths/>}/>
           <Route path='reports' element={<Reports/>}/>
+          <Route path='page' element={<Page/>}/>
         </Route>
           
        
