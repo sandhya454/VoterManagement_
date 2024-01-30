@@ -6,6 +6,7 @@ import Dashboard from './assets/Components/MainPage/Dashboard/Dashboard'
 import Users from './assets/Components/MainPage/Users/Users'
 import Booths from './assets/Components/MainPage/Booths/Booths'
 import Reports from './assets/Components/MainPage/Reports.jsx/Reports'
+import BoothList from './assets/Components/MainPage/Booths/BoothList'
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='dashboard' element={<Dashboard/>}>
           <Route path='users' element={<Users/>}/>
           <Route path='booths' element={<Booths/>}/>
+           <Route path='boothlist' element={<BoothList/>}/>         
           <Route path='reports' element={<Reports/>}/>
         </Route>
           
