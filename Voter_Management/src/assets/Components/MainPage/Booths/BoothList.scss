@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+.booth-list{
+    font-family: Poppins;
+    position: relative;
+   
+    h2{
+        color:#332A7C;
+        font-size: 30px;
+        padding: 15px;
+        box-shadow: 2px 2px 2px 2px rgb(233, 230, 230);
+    }
+   
+    .booths{
+        display: grid;
+        grid-template-columns: 142px 142px 142px 142px 142px 142px;
+        row-gap: 15px;
+        column-gap: 20px;
+        padding: 10px 50px;
+       
+        .list{
+            border: none;
+            background-color: #F6E6FB;
+            position: relative;
+            border-radius: 8px;
+            h3{
+                font-size: 40px;
+                text-align: center;
+                line-height: 65px;
+                border-bottom: 2px dotted black;
+                                
+            }
+            span{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                color: #DA0909;
+                background-color: #FFFFFF;
+                width: 23px;
+                height: 23px;
+                border-radius: 4px;
+                box-shadow:2px 2px 2px 2px rgb(233, 230, 230); 
+                .icon{
+                    position: absolute;
+                    top: -13px;
+                    left: 4px;
+                }
+            }
+            p{
+                text-align: center;
+                line-height: 2px;
+            }           
+        }
+      
+     
+    }   
+    .additional-booth{
+        border: 2px dashed gray;
+        text-align: center;
+        height: 150px;
+        margin: 5px;
+        width: 142px;
+        span{
+            position: relative;
+            top: 50px;
+        }
+        p{
+            color:#968585;
+            line-height: 85px;
+            font-size: 12px;
+        }       
+    }
+    
+        form{
+            text-align: center;
+            position: relative;
+            select{
+                width: 50vw;
+                position: absolute;
+                left: 300px;
+                padding: 15px;
+                font-size: 20px;
+                color:  #919191;
+                box-shadow: 2px 2px 2px 2px rgb(233, 230, 230);
+                border: none;
+                border-radius: 4px;
+                .opt{
+                    width: 50vw;
+                }
+            }
+        }
+        .btn{
+            position: absolute;
+            top: 360px;
+            left: 350px;
+            width: 200px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 15px;
+            background-color:#543efa ;
+            color: white;
+            box-shadow: 2px 2px 2px 2px rgb(196, 193, 193);
+        }
+    }
+ 
+
+@media only screen and (max-width:768px){
+    .booth-list{
+        h2{
+            text-align: center;
+        }
+    .booths{
+            display: grid;
+            grid-template-columns: 142px 142px;
+            padding: 10px 30px;
+    }
+    form{
+        select{
+            left: 1px;
+            width: 90vw;          
+        }
+    }
+    .btn{
+        left: 81px;
+    }
+    }
+}
