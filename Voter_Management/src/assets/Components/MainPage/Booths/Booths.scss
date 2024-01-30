@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+.constituency{
+    font-family: Poppins;
+    h2{
+        color:#332A7C;
+        font-size: 30px;
+        padding: 15px;
+        box-shadow: 2px 2px 2px 2px rgb(233, 230, 230);
+    }
+    .allocated-booths{
+        
+        .cards{
+        display: grid;
+        grid-template-columns: 14px auto auto auto auto auto;
+        text-align: center;
+        box-shadow: 2px 2px 2px 2px rgb(190, 190, 190);
+        margin: 15px 0px;
+        line-height: 100px;
+        color: #40508E;
+        font-size: 22px;
+            .blue{
+            
+                width: 14px;
+                height: 100px;
+                background-color:#4D61AD;
+            }
+            .orange{
+               
+                width: 14px;
+                height: 100px;
+                background-color: #ECA636;
+            }
+            .booths{
+                height: 100px;
+                font-size: 17px;
+                .num{
+                    position: relative;
+                    top: 20px;
+                    right: 30px;
+                }
+            }
+            .mobileNumber{
+                font-size: 17px;
+                .cellNum{
+                    position: relative;
+                    top: 20px;
+                    right: 100px;
+                }
+            }
+            button{
+                width: 120px;
+                height: 40px;
+                margin-top: 28px;
+                border: none;
+                background-color: #3366EE;
+                color: white;
+                border-radius: 5px;
+            }
+        }
+        
+    }
+}
+@media only screen and (max-width:768px){
+    .constituency{
+        .allocated-booths{
+            .cards{
+                .blue{
+                    display: none;
+                }
+                .orange{
+                    display: none;
+                }
+                display: grid;
+                grid-template-columns: auto auto ;
+            }
+            button{
+                position: relative;
+                left: 120px;
+                bottom: 15px;
+            }
+        }
+    }
+}
