@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 .constituency{
     font-family: Poppins;
+    width: 70vw;
     h2{
         color:#332A7C;
         font-size: 30px;
@@ -52,9 +53,11 @@
                 height: 40px;
                 margin-top: 28px;
                 border: none;
-                background-color: #3366EE;
+                background:linear-gradient(to right,#4B5EA6,#5E71B8,#4156A5);
                 color: white;
                 border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
             }
         }
         
@@ -62,7 +65,10 @@
 }
 @media only screen and (max-width:768px){
     .constituency{
+        width: 100vw;
+        overflow-y: scroll;
         .allocated-booths{
+            
             .cards{
                 .blue{
                     display: none;
