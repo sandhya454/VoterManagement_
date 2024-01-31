@@ -12,24 +12,18 @@ import Page from './assets/Components/MainPage/Page/page'
 
 
 function App() {
-
-  
-
   return (
     <>
     <Router>
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='dashboard' element={<Dashboard/>}>
-          <Route path='users' element={<Users/>}/>
-         
+          <Route path='users' element={<Users/>}/>         
           <Route path='allocated' element={<Booths/>}/> 
           <Route path='allocated/boothlist' element={<BoothList/>}/>         
           <Route path='reports' element={<Reports/>}/>
           <Route path='page' element={<Page/>}/>
-        </Route>
-          
-       
+        </Route>                 
       </Routes>
     </Router>
       
@@ -37,4 +31,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
