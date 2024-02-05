@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import login from "../../Images/login.svg";
-import '../Login/Login.scss'
+import '../Login/Login.scss';
 export default function Login() {
     const navigate = useNavigate();
   const [adminName, setAdminName] = useState('');
@@ -68,9 +68,7 @@ const handleLogin=()=>{
                 <button type="button" onClick={handleLogin}>Continue</button>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
             </form>
-        </div>
-
-        
+        </div>        
     </div>
     
     </>

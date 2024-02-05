@@ -1,5 +1,6 @@
 body{
     overflow: hidden;
+    /* overflow-y: scroll; */
 }
 .dashboard-main-container{
     height: 50vw;
@@ -161,7 +162,7 @@ body{
 
 @media (max-width:768px){
     body{
-        overflow-x: hidden;
+        overflow-y: scroll;
     }
     .dashboard-head{
         font-size: 4vw;

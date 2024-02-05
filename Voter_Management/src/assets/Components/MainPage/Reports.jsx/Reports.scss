@@ -1,0 +1,105 @@
+.Reports{
+    padding: 10px;
+    h3{
+        font-size: 28px;
+            font-weight: bold;
+            color: #332A7C;
+    }
+    .Drop-downs{
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 20px;
+        .gender{
+           
+            select{
+                width: 150px;
+                padding: 5px;
+            }
+        }
+        .Part-no{
+            select{
+                width: 150px;
+                padding: 5px;
+            }
+        }
+        .Age{
+            select{
+                width: 150px;
+                padding: 5px;
+            }
+        }
+        .Caste{
+            select{
+                width: 150px;
+                padding: 5px;
+            }
+        }
+    }
+    .Search{
+        margin: 20px 30px;
+        position: relative;
+        .search-bar{
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #332A7C;
+            border-radius: 5px;
+        }
+        .search-icon{
+            position: absolute;
+            font-size: 20px;
+            top: 10px;
+            left: 190px;
+            color: #332A7C;
+            
+        }
+    }
+    .report-table{
+        overflow-x: scroll; 
+        width: 80vw;
+        table{  
+           
+             
+            thead{
+                font-weight: 500;
+                background-color: #EFF0F5;
+                color: #617099;
+                font-size: 18px;
+                height: 58px;
+                
+               th{                
+                padding: 10px;
+               } 
+            }
+            tbody{
+                tr{
+                    height: 40px;
+                    td{
+                        text-align: center;
+                        font-size: 17px;
+                        color: #2A303F;
+                    }
+                }
+            }
+            
+          
+        }
+    }
+}
+@media only screen and (max-width:768px){
+    .Reports{
+        width: 100vw;
+        .Drop-downs{
+            display: block;
+            text-align: center;
+        }
+        .Search{
+            text-align: center;
+            .search-icon{
+                left:220px;
+            }
+        }
+        .report-table{
+            width: 100vw;
+        }
+    }
+}

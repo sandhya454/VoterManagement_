@@ -8,6 +8,7 @@
         font-size: 30px;
         padding: 15px;
         box-shadow: 2px 2px 2px 2px rgb(233, 230, 230);
+        cursor: pointer;
     }
    
     .booths{
@@ -62,11 +63,13 @@
         span{
             position: relative;
             top: 50px;
+            cursor: pointer;
         }
         p{
             color:#968585;
             line-height: 85px;
             font-size: 12px;
+            cursor: pointer;
         }       
     }
     
@@ -113,6 +116,7 @@
             display: grid;
             grid-template-columns: 142px 142px;
             padding: 10px 30px;
+            overflow-y: scroll;
     }
     form{
         select{
