@@ -10,9 +10,7 @@ import Reports from './assets/Components/MainPage/Reports.jsx/Reports'
 import BoothList from './assets/Components/MainPage/Booths/BoothList'
 import Page from './assets/Components/MainPage/Page/page'
 
-import BoothList from './assets/Components/MainPage/Booths/BoothList'
 
-import Page from './assets/Components/MainPage/Page/page'
 
 
 
