@@ -17,6 +17,7 @@ const booths=()=>{
   setButtonVisible(false)
   setBoothVisible(true)
 }
+
   return (
     <>
         <div className='booth-list'>
@@ -28,10 +29,7 @@ const booths=()=>{
                           <p>Create Booth</p>
                     </div>}</div>
                     {buttonVisible && <button className='btn' onClick={booths}>Save</button>}
-              </div>
-
-              
-       
+              </div>       
     </>
   )
 }
@@ -58,8 +56,7 @@ const ShowBooths=()=>{
     </>
   )
 };
-const CreateBooth=()=>{
-  
+const CreateBooth=()=>{  
       return(
         <>
         <form>         

@@ -23,7 +23,9 @@ function App() {
           <Route path='allocated/boothlist' element={<BoothList/>}/>         
           <Route path='reports' element={<Reports/>}/>
           <Route path='page' element={<Page/>}/>
-        </Route>                 
+        </Route>
+          
+       
       </Routes>
     </Router>
       

@@ -3,11 +3,10 @@ import './Reports.scss';
 import { FiSearch } from "react-icons/fi";
 
 function Reports() {
-  const initialdata=[{id:1,Part_No:"01",Voter_Card_No:"12235456",Voter_Name:"sandhya",Relative_Name:"Dinesh",Relation:"Husband",Age:"26",Gender:"Female",House_No:"1-72",Ward_No:"06",Area:"Tirupathi",Mobile_Number:"8008139991",Caste:"BC-D",Color:"Blue",Problem:"Nothing",Remarks:"No Remarks",Survey:"Survey"},
+  const initialdata=[{id:1,Part_No:"01",Voter_Card_No:"123",Voter_Name:"sandhya",Relative_Name:"Dinesh",Relation:"Husband",Age:"26",Gender:"Female",House_No:"1-72",Ward_No:"06",Area:"Tirupathi",Mobile_Number:"8008139991",Caste:"BC-D",Color:"Blue",Problem:"Nothing",Remarks:"No Remarks",Survey:"Survey"},
   {id:2,Part_No:"02",Voter_Card_No:"12235456",Voter_Name:"Dinesh",Relative_Name:" Sandhya",Relation:"wife",Age:"29",Gender:"Male",House_No:"1-72",Ward_No:"06",Area:"Tirupathi",Mobile_Number:"8008139991",Caste:"General",Color:"Blue",Problem:"Nothing",Remarks:"No Remarks",Survey:"Survey"},
   {id:3,Part_No:"02",Voter_Card_No:"12235456",Voter_Name:"Ramesh",Relative_Name:"Nagendra",Relation:"Friend",Age:"22",Gender:"Male",House_No:"1-72",Ward_No:"06",Area:"Tirupathi",Mobile_Number:"8008139991",Caste:"General",Color:"Blue",Problem:"Nothing",Remarks:"No Remarks",Survey:"Survey"},
   {id:4,Part_No:"02",Voter_Card_No:"12235456",Voter_Name:"Nagendra",Relative_Name:"Manikanta",Relation:"Friend",Age:"21",Gender:"Male",House_No:"1-72",Ward_No:"06",Area:"Tirupathi",Mobile_Number:"8008139991",Caste:"General",Color:"Blue",Problem:"Nothing",Remarks:"No Remarks",Survey:"Survey"}]
-
 
   const [data, setData] = useState(initialdata);
   const [selectedGender, setSelectedGender] = useState('');
@@ -16,6 +15,23 @@ function Reports() {
   const [selectedCaste, setSelectedCaste] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+
+  // useEffect(()=>{
+  //   const fetchData=async()=>{
+  //     try{
+  //       const response=await fetch(" ");
+  //       if(!response.ok){
+  //         throw new Error("Failed to fetch")
+  //       }
+  //       const result=await response.json();
+  //       setData(result);
+  //     }
+  //     catch(error){
+  //           console.error("Error fetching Data",error)
+  //     }
+  //   }
+  //   fetchData()
+  // },[])
 
   const filterData = () => {
     let filteredData = initialdata;
@@ -46,6 +62,7 @@ function Reports() {
   useEffect(() => {
     filterData();
   }, [selectedGender, selectedPartNo, selectedAge, selectedCaste, selectedColor, searchTerm]);
+
   return (
     <>
           <div className='Reports'>
@@ -155,5 +172,4 @@ function Reports() {
     </>
   )
 }
-
-export default Reports
+export default Reports;
