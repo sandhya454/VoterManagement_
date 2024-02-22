@@ -7,7 +7,12 @@ export default function Booths() {
   const booths=[{id:1,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
   {id:2,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
   {id:3,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
-  {id:4,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"}]
+  {id:4,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
+  {id:5,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
+  {id:6,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
+  {id:7,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
+  {id:8,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
+  {id:9,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"}]
   const boothList=()=>{
     navigate("boothlist")
   }

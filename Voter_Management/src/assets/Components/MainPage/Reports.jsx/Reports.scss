@@ -1,81 +1,92 @@
 .Reports{
-    padding: 10px;
+    height: 78vh;
+    width: 75vw;
+    font-family:Poppins;
+    box-shadow: 1px 1px 3px 1px rgb(170, 170, 170);
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    border-radius:1vw;
+    margin-left: 1vw;
     h3{
-        font-size: 28px;
+        font-size: 2vw;
             font-weight: bold;
             color: #332A7C;
     }
     .Drop-downs{
         display: flex;
         justify-content: space-around;
-        padding-bottom: 20px;
+        padding-bottom: 1.5vw;
+        font-size: 1.5vw;
         .gender{
            
             select{
-                width: 150px;
-                padding: 5px;
+                width: 11vw;
+                padding: 0.5vw;
             }
         }
         .Part-no{
             select{
-                width: 150px;
-                padding: 5px;
+                width: 11vw;
+                padding: 0.5vw;
             }
         }
         .Age{
             select{
-                width: 150px;
-                padding: 5px;
+                width: 11vw;
+                padding: 0.5vw;
             }
         }
         .Caste{
             select{
-                width: 150px;
-                padding: 5px;
+                width: 11vw;
+                padding: 0.5vw;
             }
         }
     }
     .Search{
-        margin: 20px 30px;
-        position: relative;
-        .search-bar{
-            width: 200px;
-            padding: 10px;
-            border: 1px solid #332A7C;
-            border-radius: 5px;
+        margin: 1.3vw 2vw;        
+        border: 1px solid  #332A7C;
+        width: 22vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0vw 1vw;
+        border-radius: 1vw;
+        .search-bar{          
+            padding: 1.1vw;
+            border: none;
+            outline: none;
+            
         }
-        .search-icon{
-            position: absolute;
-            font-size: 20px;
-            top: 10px;
-            left: 190px;
+        .search-icon{          
+            font-size: 1.5vw;           
             color: #332A7C;
             
         }
     }
     .report-table{
         overflow-x: scroll; 
-        width: 80vw;
+        width: 75vw;
         table{  
            
              
             thead{
-                font-weight: 500;
+                // font-weight: 500;
                 background-color: #EFF0F5;
                 color: #617099;
-                font-size: 18px;
-                height: 58px;
+                font-size: 1.2vw;
+                height: 4vw;
                 
                th{                
-                padding: 10px;
+                padding: 1vw;
                } 
             }
             tbody{
                 tr{
-                    height: 40px;
+                    height: 3vw;
                     td{
                         text-align: center;
-                        font-size: 17px;
+                        font-size: 1.3vw;
                         color: #2A303F;
                     }
                 }
@@ -87,19 +98,74 @@
 }
 @media only screen and (max-width:768px){
     .Reports{
-        width: 100vw;
+        height: 80vh;
+        width: 100vw !important;
+        h3{
+            font-size: 6vw;
+            margin-left: 0.8vw;
+        }
         .Drop-downs{
             display: block;
             text-align: center;
+            .gender{
+                label{
+                    font-size: 5vw;
+                }
+                select{                    
+                        width: 80%;
+                }
+            }
+            .Part-no{
+                label{
+                    font-size: 5vw;
+                }
+                select{                    
+                        width: 80%;
+                }
+
+            }
+            .Age{
+                label{
+                    font-size: 5vw;
+                }
+                select{                    
+                        width: 80%;
+                }
+            }
+            .Caste{
+                label{
+                    font-size: 5vw;
+                }
+                select{                    
+                        width: 80%;
+                }
+            }
         }
         .Search{
             text-align: center;
-            .search-icon{
-                left:220px;
-            }
+           width: 80%;
+           .search-bar{
+            font-size: 5vw;
+           }
+           .search-icon{
+            font-size: 3vw;
+           }
         }
         .report-table{
             width: 100vw;
+           table{
+            thead{
+                font-size: 3vw;
+            }
+            tbody{
+                tr{
+                    height: 3vh;
+                    td{
+                        font-size: 3vw;
+                    }
+                }
+            }
+           }
         }
     }
 }

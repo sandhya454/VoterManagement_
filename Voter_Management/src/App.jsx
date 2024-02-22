@@ -29,13 +29,7 @@ function App() {
           <Route path='allocated/boothlist' element={<BoothList/>}/> 
 
           <Route path='page' element={<Page/>}/>
-
-              
-          <Route path='reports' element={<Reports/>}/>
-        
-        </Route>
-          
-       
+          </Route>
       </Routes>
     </Router>
       
