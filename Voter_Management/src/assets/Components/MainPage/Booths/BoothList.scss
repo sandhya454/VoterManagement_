@@ -2,48 +2,55 @@
 .booth-list{
     font-family: Poppins;
     position: relative;
+    width: 75vw;
+    height: 78vh;
+    box-shadow: 1px 1px 3px 1px rgb(170, 170, 170);
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    border-radius:1vw;
+    margin-left: 1vw;
+    overflow-y: scroll;
    
     h2{
         color:#332A7C;
-        font-size: 30px;
-        padding: 15px;
-        box-shadow: 2px 2px 2px 2px rgb(233, 230, 230);
+        font-size: 2vw;
+        padding: 1vw;  
         cursor: pointer;
     }
    
     .booths{
         display: grid;
-        grid-template-columns: 142px 142px 142px 142px 142px 142px;
-        row-gap: 15px;
-        column-gap: 20px;
-        padding: 10px 50px;
+        grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw;
+        row-gap: 1vw;
+        column-gap: 1.5vw;
+        padding: 0.8vw 3vw;
        
         .list{
             border: none;
             background-color: #F6E6FB;
             position: relative;
-            border-radius: 8px;
+            border-radius: 0.8vw;
             h3{
-                font-size: 40px;
+                font-size: 3vw;
                 text-align: center;
-                line-height: 65px;
+                line-height: 5vw;
                 border-bottom: 2px dotted black;
                                 
             }
             span{
                 position: absolute;
-                top: 10px;
-                right: 10px;
+                top: 0.9vw;
+                right: 0.8vw;
                 color: #DA0909;
                 background-color: #FFFFFF;
-                width: 23px;
-                height: 23px;
-                border-radius: 4px;
+                width: 1.9vw;
+                height: 1.8vw;
+                border-radius: 0.5vw;
                 box-shadow:2px 2px 2px 2px rgb(233, 230, 230); 
                 .icon{
                     position: absolute;
-                    top: -13px;
-                    left: 4px;
+                    top:-0.9vw;
+                    left: 0.3vw;
                 }
             }
             p{
@@ -57,44 +64,45 @@
     .additional-booth{
         border: 2px dashed gray;
         text-align: center;
-        height: 150px;
-        margin: 5px;
-        width: 142px;
+        height: 25vh;
+        margin: 0.5vw;
+        width: 10vw;
         span{
             position: relative;
-            top: 50px;
+            top: 4.5vw;
             cursor: pointer;
         }
         p{
             color:#968585;
-            line-height: 85px;
-            font-size: 12px;
+            line-height: 8vw;
+            font-size: 1vw;
             cursor: pointer;
         }       
     }
+
+    .form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     
         form{
-            text-align: center;
-            position: relative;
+            
             select{
                 width: 50vw;
-                position: absolute;
-                left: 300px;
-                padding: 15px;
-                font-size: 20px;
+               
+                padding: 1vw;
+                font-size: 1.5vw;
                 color:  #919191;
                 box-shadow: 2px 2px 2px 2px rgb(233, 230, 230);
                 border: none;
-                border-radius: 4px;
-                .opt{
-                    width: 50vw;
-                }
+                border-radius: 1vw;
+                
             }
         }
         .btn{
-            position: absolute;
-            top: 360px;
-            left: 350px;
+            position: relative;
+            top: 10vw;
             width: 200px;
             padding: 10px;
             border-radius: 5px;
@@ -102,30 +110,64 @@
             font-size: 15px;
             background-color:#543efa ;
             color: white;
-            box-shadow: 2px 2px 2px 2px rgb(196, 193, 193);
+            box-shadow: 2px 2px 2px 2px rgb(196, 193, 193);           
+           
         }
     }
- 
+    .booth-list::-webkit-scrollbar
+    {
+    
+      display: none;
+    
+    }
 
 @media only screen and (max-width:768px){
     .booth-list{
+       overflow-y: scroll;
+       width: 95vw;
+       height: 80vh;
         h2{
             text-align: center;
+            font-size: 4vw;
         }
     .booths{
+        margin-left: 2vw;
             display: grid;
-            grid-template-columns: 142px 142px;
-            padding: 10px 30px;
-            overflow-y: scroll;
+            grid-template-columns: 20vw 20vw 20vw 20vw;
+            padding: 0.9vw 2vw;
+            font-size: 3vw;
+            .list{
+                h3{
+                    font-size: 4vw;
+                    border-bottom: 0.2vw dotted black;
+                }
+                span{
+                    width: 3.9vw;
+                    height: 3.8vw;
+
+                    .icon{
+                        top: -2.5vw;
+                        font-size: 3vw;
+                    }
+                }
+                p{
+                    font-size: 3.5vw;
+                }
+            }
+            .additional-booth{
+                height: 11vh !important;
+                width: 20vw;
+            }
     }
     form{
         select{
-            left: 1px;
+            font-size: 4vw;
             width: 90vw;          
         }
     }
     .btn{
-        left: 81px;
+        position: relative;
+        top: 25vw;
     }
     }
 }

@@ -39,7 +39,7 @@
         table{
             position: absolute;
             top: 50px;
-            width: 891px;
+            width: 95%;
             box-shadow: 2px 2px 2px 2px #e2e0e0;
             thead{
                 font-weight: 500;
@@ -113,6 +113,11 @@
         
     }
 }
+@media only screen  and (max-width:1200px){
+    .Users{
+        width: 84vw ;
+    }
+}
 @media only screen and (max-width:768px){
     .Users{        
         height: 100vh;
@@ -125,7 +130,7 @@
             overflow-x: auto;     
             table{
                 position: static;
-                width: 891px;
+                width: 95%;
             }
         }
         .user-form{

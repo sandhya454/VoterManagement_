@@ -28,7 +28,10 @@ const booths=()=>{
                       <span ><CiCirclePlus /></span>
                           <p>Create Booth</p>
                     </div>}</div>
-                    {buttonVisible && <button className='btn' onClick={booths}>Save</button>}
+                  <div className="form">
+                          {buttonVisible &&  <button className='btn' onClick={booths}>Save</button>}
+                  </div>
+                    
               </div>       
     </>
   )
@@ -38,6 +41,10 @@ const ShowBooths=()=>{
   const booths=[{id:1,booth:"1",icon:<FaTrash/>},{id:2,booth:"2",icon:<FaTrash/>},
                 {id:3,booth:"3",icon:<FaTrash/>},{id:4,booth:"4",icon:<FaTrash/>},
                 {id:5,booth:"5",icon:<FaTrash/>},{id:6,booth:"6",icon:<FaTrash/>},
+                {id:6,booth:"5",icon:<FaTrash/>},{id:7,booth:"6",icon:<FaTrash/>},
+                {id:6,booth:"5",icon:<FaTrash/>},{id:7,booth:"6",icon:<FaTrash/>},
+                {id:6,booth:"5",icon:<FaTrash/>},{id:7,booth:"6",icon:<FaTrash/>},
+                {id:6,booth:"5",icon:<FaTrash/>},{id:7,booth:"6",icon:<FaTrash/>},
                 {id:6,booth:"5",icon:<FaTrash/>},{id:7,booth:"6",icon:<FaTrash/>}]        
   return(
     <>                

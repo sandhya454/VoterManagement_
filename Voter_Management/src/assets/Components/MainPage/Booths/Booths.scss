@@ -1,61 +1,73 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 .constituency{
     font-family: Poppins;
-    width: 70vw;
+    width: 75vw;
+    height: 80vh !important;
+    box-shadow: 1px 1px 3px 1px rgb(170, 170, 170);
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    border-radius:1vw;
+    margin-left: 1vw;   
+    overflow-y: scroll;
     h2{
         color:#332A7C;
-        font-size: 30px;
-        padding: 15px;
-        box-shadow: 2px 2px 2px 2px rgb(233, 230, 230);
+        font-size: 2vw;
+        padding: 1vw;  
+        
+        
     }
     .allocated-booths{
+        padding: 1vw;
         
-        .cards{
+        .cards{            
         display: grid;
-        grid-template-columns: 14px auto auto auto auto auto;
+        grid-template-columns: 1vw auto auto auto auto auto;
         text-align: center;
         box-shadow: 2px 2px 2px 2px rgb(190, 190, 190);
-        margin: 15px 0px;
-        line-height: 100px;
+        margin: 1vw 0px;
+        line-height: 7.5vw;
         color: #40508E;
-        font-size: 22px;
+        font-size: 1.5vw;
+        border-radius: 1vw;
             .blue{
             
-                width: 14px;
-                height: 100px;
+                width: 1vw;
+                height: 7.2vw;
                 background-color:#4D61AD;
+                border-radius: 0.5vw;
             }
             .orange{
                
-                width: 14px;
-                height: 100px;
+                width: 1vw;
+                height: 7.2vw;
                 background-color: #ECA636;
+                border-radius: 0.5vw;
             }
             .booths{
-                height: 100px;
-                font-size: 17px;
+                height: 5vw;
+                font-size: 1.5vw;
                 .num{
                     position: relative;
-                    top: 20px;
-                    right: 30px;
+                    top: 1.3vw;
+                    right: 2.5vw;
                 }
             }
             .mobileNumber{
-                font-size: 17px;
+                font-size: 1.3vw;
                 .cellNum{
                     position: relative;
-                    top: 20px;
-                    right: 100px;
+                    top: 1.3vw;
+                    right: 7.5vw;
                 }
             }
             button{
-                width: 120px;
-                height: 40px;
-                margin-top: 28px;
+                width: 8vw;
+                height: 3.5vw;
+                margin-top: 2.3vw;
                 border: none;
                 background:linear-gradient(to right,#4B5EA6,#5E71B8,#4156A5);
                 color: white;
-                border-radius: 5px;
+                border-radius: 1vw;
                 cursor: pointer;
                 font-weight: bold;
             }
@@ -63,13 +75,24 @@
         
     }
 }
+.constituency::-webkit-scrollbar
+{
+  display: none;
+}
 @media only screen and (max-width:768px){
     .constituency{
-        width: 100vw;
+        width: 97vw !important;
+        height: 80vh !important;
         overflow-y: scroll;
-        .allocated-booths{
-            
+        overflow-x: hidden;
+        h2{
+            font-size: 5vw;
+        }
+        .allocated-booths{  
+            width: 95%;          
             .cards{
+                font-size: 3vw;
+                margin-left: 0.5vw;
                 .blue{
                     display: none;
                 }
@@ -78,11 +101,30 @@
                 }
                 display: grid;
                 grid-template-columns: auto auto ;
+                .mobileNumber{
+                    font-size: 3vw;
+                    position: relative;
+                    left: 8vw;
+                    .cellNum{
+                        top: 3.2vw;
+                        font-size: 3vw;
+                        right: 13vw;
+                    }
+                }
+                .booths{
+                    font-size: 3vw;
+                    .num{
+                        top: 3vw;
+                        right: 5vw;
+                    }
+                }
             }
             button{
                 position: relative;
-                left: 120px;
-                bottom: 15px;
+                font-size: 2 !important;
+                width: 15vw !important;
+                left: 40vw;
+                bottom: 1vw;
             }
         }
     }
