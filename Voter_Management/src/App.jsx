@@ -11,12 +11,8 @@ import BoothList from './assets/Components/MainPage/Booths/BoothList'
 import Page from './assets/Components/MainPage/Page/page'
 
 
-
-
-
-
-
 function App() {
+  
   return (
     <>
     <Router>
