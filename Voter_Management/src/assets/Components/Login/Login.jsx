@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import login from "../../Images/login.svg";
 import '../Login/Login.scss';
 export default function Login() {
@@ -8,44 +9,35 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-//   const handleLogin = async() => {
-//     try{
-//         const response=await fetch(" ",{
-//             method:"POST",
-//             headers:{
-//                 'Content-Type':"application/json"
-//             },
-//             body:JSON.stringify({
-//                 adminName,
-//                 password,
-//             }),
-//         });
-//         if(response.ok){
-//                     const data= await response.json();
-//                     const token= data.token;
-//                     navigate('/dashboard');
-//         }else if (adminName !== 'sandhya') {
-//             setError('Incorrect admin name. Please try again.');
-//         }else {
-//             setError('Incorrect password. Please try again.');
-//         }
-//     } catch(error){
-//         console.error('Error during login:', error);
-//         setError('An unexpected error occurred. Please try again later.');
-//     }
-// }
+  const handleLogin = async() => {
+    try{
+        const response=await fetch("http://localhost:2100/admin/admin-login ",{
+            method:"POST",
+            headers:{
+                'Content-Type':"application/json"
+            },
+            body:JSON.stringify({
+                admin_name:adminName,
+                password:password
+            }),
+        });
+        if(response.ok){
+                    const data= await response.json();
+                    const token=data.token
+                    
+                    Cookies.set('token',token)
 
-const handleLogin=()=>{
-    // authentication logic here
-    if (adminName==="sandhya" && password === 'password') {
-      navigate('/dashboard');
-    }else if (adminName !== 'sandhya') {
-        setError('Incorrect admin name. Please try again.');
-      }
-     else {
-      setError('Incorrect password. Please try again.');
+                    navigate('/dashboard');
+        }
+        
+        else {
+            setError('Invalid Credentials');
+        }
+    } catch(error){
+        console.error('Error during login:', error);
+        setError('An unexpected error occurred. Please try again later.');
     }
-  };
+}
   return (
     <>
      <div className='login-form'>

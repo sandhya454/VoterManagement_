@@ -12,16 +12,13 @@
     h2{
         color:#332A7C;
         font-size: 2vw;
-        padding: 1vw;  
-        
-        
+        padding: 1vw;                  
     }
     .allocated-booths{
-        padding: 1vw;
-        
+        padding: 1vw;       
         .cards{            
         display: grid;
-        grid-template-columns: 1vw auto auto auto auto auto;
+        grid-template-columns: 1vw 15vw 15vw 15vw 15vw 12vw;
         text-align: center;
         box-shadow: 2px 2px 2px 2px rgb(190, 190, 190);
         margin: 1vw 0px;
@@ -32,7 +29,7 @@
             .blue{
             
                 width: 1vw;
-                height: 7.2vw;
+                height: 7.5vw;
                 background-color:#4D61AD;
                 border-radius: 0.5vw;
             }
@@ -89,10 +86,14 @@
             font-size: 5vw;
         }
         .allocated-booths{  
-            width: 95%;          
+            // width: 95%;  
+            margin: 1vw;        
             .cards{
-                font-size: 3vw;
-                margin-left: 0.5vw;
+                font-size: 5vw;
+                // margin-left: 0.5vw;
+                // margin-right: 0.5vw;
+                margin-top: 4.5vw;
+                height: 40vw;
                 .blue{
                     display: none;
                 }
@@ -102,29 +103,31 @@
                 display: grid;
                 grid-template-columns: auto auto ;
                 .mobileNumber{
-                    font-size: 3vw;
+                    font-size: 5vw;
                     position: relative;
-                    left: 8vw;
+                    left: 10vw;
                     .cellNum{
-                        top: 3.2vw;
-                        font-size: 3vw;
-                        right: 13vw;
+                        top: 3.9vw;
+                        font-size: 4vw;
+                        right: 25vw;
                     }
                 }
                 .booths{
-                    font-size: 3vw;
+                    font-size: 5vw;
                     .num{
-                        top: 3vw;
-                        right: 5vw;
+                        top: 5vw;
+                        right: 10vw;
                     }
                 }
             }
             button{
                 position: relative;
-                font-size: 2 !important;
-                width: 15vw !important;
-                left: 40vw;
-                bottom: 1vw;
+                font-size: 5 !important;
+                width: 30vw !important;
+                padding: 2vw;
+                left: 32vw;
+                height: 10vw!important;
+                // bottom: 1vw;
             }
         }
     }

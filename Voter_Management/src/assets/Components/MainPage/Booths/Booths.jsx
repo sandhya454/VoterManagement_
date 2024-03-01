@@ -1,54 +1,89 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Booths/Booths.scss';
 import { useNavigate } from 'react-router-dom';
 
 export default function Booths() {
   const navigate=useNavigate()
-  const booths=[{id:1,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
-  {id:2,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
-  {id:3,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
-  {id:4,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
-  {id:5,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
-  {id:6,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
-  {id:7,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
-  {id:8,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"},
-  {id:9,date:"jan27,2024",name:"P.Nagendra",booths:"8",mobilenumber:"987654332"}]
-  const boothList=()=>{
-    navigate("boothlist")
+  const [booth,setBooth]=useState([])
+  const [boothCount,setBoothCount]=useState([])
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:2100/admin/get-users',{
+        method:'GET',
+        headers:{
+          'Content-Type':'application/json'
+        }
+          
+      });
+      console.log('API Response:', response); 
+      if(response.ok){
+        const responseData=await response.json()
+        console.log(responseData,'response');
+        setBooth(responseData  )       
+      }
+      else{
+        alert('no')
+      }   
+       
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }  
+  };
+
+
+
+  const getBooths = async () => {
+    try {
+      const response = await fetch('http://localhost:2100/admin/get-allocated-booths',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        }
+          
+      });
+      console.log('API Response:', response); 
+      if(response.ok){
+        const responseData=await response.json()
+        console.log(responseData,'ALLOCAtED111');
+        setBoothCount(responseData  )       
+      }
+      else{
+        alert('no')
+      }   
+       
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(()=>{
+    fetchData()
+    getBooths()
+  },[]);
+
+  const boothList=(id,name,mobile)=>{
+    navigate(`boothlist/${id}/${name}/${mobile}`)
   }
   return (
     <>
           <div className='constituency'>
               <h2>Constituency</h2>
               <div className='allocated-booths'>
-                  {booths.map((i)=>{
-                    if(i.id%2===0){
-                      return(
+                  {booth.map((i)=>{
+                   return(
                         <>
-                          <div className='cards'>
+                        <div className='cards'>
                         <div className='blue'></div>
                         <div className='date'>{i.date}</div>
                         <div className='username'>{i.name}</div>
-                        <div className='booths'><span>Booths</span><span className='num'>{i.booths}</span></div>
-                        <div className='mobileNumber'><span>Mobile Number</span><span className='cellNum'>{i.mobilenumber}</span></div>
-                        <button onClick={boothList}>+Allocate</button>
+                        <div className='booths'><span>Booths</span><span className='num'>{boothCount.filter((booth)=>booth.user_id==i.user_id).length}</span></div>
+                        <div className='mobileNumber'><span>Mobile Number</span><span className='cellNum'>{i.mobile_number}</span></div>
+                        <button onClick={()=>{boothList(i.user_id,i.name,i.mobile_number)}}>+Allocate</button>
                         </div>
                         </>
                       )
-                    }else{
-                      return(
-                        <>
-                        <div className='cards'>
-                        <div className='orange'></div>
-                        <div className='date'>{i.date}</div>
-                        <div  className='username'>{i.name}</div>
-                        <div className='booths'><span>Booths</span><span className='num'>{i.booths}</span></div>
-                        <div className='mobileNumber'><span>Mobile Number</span><span className='cellNum'>{i.mobilenumber}</span></div>
-                        <button onClick={boothList}>+Allocate</button>
-                        </div>
-                        </>
-                      )
-                    }
+                    
                   })}
               </div>
           </div>

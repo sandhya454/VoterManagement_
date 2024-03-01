@@ -1,18 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { json, useNavigate } from 'react-router-dom';
 // import '../Users/Users.scss';
 import '../Users/User.scss';
-import ToggleSwitch from '../Users/ToggleSwitch.jsx';
+// import ToggleSwitch from '../Users/ToggleSwitch.jsx';
+import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { Switch } from 'antd';
+
 
 
 
 export default function Users() {
   const [showUserList,setShowUserList]=useState(true);
+  const [updateTable, setUpdateTable] = useState(false);
   const displayUser=()=>{
         setShowUserList(true)
   }
   const toggleView = () => {
     setShowUserList(false);
+  };
+  const handleUserCreated = () => {
+    setUpdateTable(true);
+  };
+
+  useEffect(() => {
+    if (updateTable) {
+      fetchData();
+      setUpdateTable(false);
+    }
+  }, [updateTable]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:2100/admin/get-users', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log(responseData, 'response');
+      } else {
+        alert('Failed to fetch user data');
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
  
   return (
@@ -23,50 +58,92 @@ export default function Users() {
             <div className='heading' onClick={displayUser} >Users</div>
             <button className='btn' onClick={toggleView}>+create user</button>
           </div>
-          {showUserList ? <UserList/>:<CreateUserForm/>}
+          {showUserList ? <UserList fetchData={fetchData}  />:<CreateUserForm onUserCreated={handleUserCreated} displayUser={displayUser}/>}
         </div>
     </>
   )
 }
 const UserList=()=>{
   const [data, setData] = useState([]);
+  const [status,setStatus]=useState(false)
 
-  useEffect(() => {
+  
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/data',{
+        const response = await fetch('http://localhost:2100/admin/get-users',{
           method:'GET',
           headers:{
-            'Content-Type':'applications/json'
-          }
-
+            'Content-Type':'application/json'
+          }            
         });
-
-        
+        console.log('API Response:', response); 
         if(response.ok){
-          const data=await response.json()
-          setData(data)       
+          const responseData=await response.json()
+          console.log(responseData,'response');
+          setData(responseData  )       
         }
         else{
           alert('no')
-        }    
+        }   
+         
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-    };
 
-    fetchData();
-  }, []);
-  // const users=[{ username:"Nagendra",password:"9808387687",name:"nagendra",mobilenumber:"878768736",email:"nagendra@gmail.com",age:"21",gender:"male",status:<ToggleSwitch label={"1"}/>},
-  // { username:"Manikanta",password:"9808387687",name:"manikanta",mobilenumber:"878768736",email:"nagendra@gmail.com",age:"21",gender:"male",status:<ToggleSwitch label={"2"}/>},
-  // { username:"Ramesh",password:"9808387687",name:"ramesh",mobilenumber:"878768736",email:"nagendra@gmail.com",age:"21",gender:"male",status:<ToggleSwitch label={"3"}/>},
-  // { username:"Barath",password:"9808387687",name:"barath",mobilenumber:"878768736",email:"nagendra@gmail.com",age:"21",gender:"male",status:<ToggleSwitch label={"4"}/>}]
+    
+    };
+   
+ 
+useEffect(()=>{
+  fetchData();
+},[])
+  const updateStatus=async (Status,id)=>{
+
+      try{
+        var mani=confirm("are you sure?")
+           if(mani==true){
+
+        let status="ACTIVE"
+        if(Status==false){
+
+          status="INACTIVE"
+
+
+        }
+
+        
+
+          const response =await fetch("http://localhost:2100/admin/user-status",{
+            method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({status,id})
+          }
+          )
+          console.log(response,"status");
+          if(response.ok){
+            
+            fetchData()
+          }else{
+            alert("no")
+          }
+
+      }
+      
+    
+    }  catch(error){
+        console.error("error",error);
+      }
+         
+  }
           return(
             <>
               <div className='user-table'>
               <table cellSpacing={0} cellPadding={0}>
                 <thead>
                   <tr>
+                    
                   <th>User Name</th>
                   <th>Password</th>
                   <th>Name</th>
@@ -74,25 +151,34 @@ const UserList=()=>{
                   <th>Email</th>
                   <th>Age</th>
                   <th>Gender</th>
-                  {/* <th>Status</th> */}
+                  <th>Status</th>
+                  
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((i)=>{
-                    return(
-                      <>
-                      <tr key={i.user_id}>
-                        <td>{i.user_name}</td>
-                        <td>{i.password}</td>
-                        <td>{i.name}</td>
-                        <td>{i.mobile_number}</td>
-                        <td>{i.email}</td>
-                        <td>{i.age}</td>
-                        <td>{i.gender}</td>
-                        {/* <td className='icon'>{i.status}</td> */}
-                      </tr></>
-                    )
-                  })}
+                {Array.isArray(data)?
+                data.map((i)=>{
+                  return(
+                    <>
+                    <tr key={i.user_id}>
+                     
+                      <td>{i.user_name}</td>
+                      <td>{i.password}</td>
+                      <td>{i.name}</td>
+                      <td>{i.mobile_number}</td>
+                      <td>{i.email}</td>
+                      <td>{i.age}</td>
+                      <td>{i.gender}</td>
+                      <td className='icon' ><Switch
+      checkedChildren={<CheckOutlined />}
+      unCheckedChildren={<CloseOutlined />}
+      value={(i.status==="ACTIVE")?true:false} onChange={(value)=>{updateStatus(value,i.user_id)}}
+    /></td>
+                      
+                    </tr></>
+                  )
+                }):<p>not getting</p>}
+                  
                 </tbody>
               </table>
           </div>
@@ -100,25 +186,38 @@ const UserList=()=>{
           )
 };
 
-const CreateUserForm=()=>{
-  const [username,setUserName]=useState();
-  const [password,setPassword]=useState();
-  const [name,setName]=useState();
-  const [mobileNumeber,setMobileNumber]=useState();
-  const [email,setEmail]=useState();
-  const [age,setAge]=useState();
-  const [gender,setGender]=useState();
-  const handleSubmit=(e)=>{
+const CreateUserForm=({onUserCreated,displayUser})=>{
+  const navigate=useNavigate()
+  const [username,setUserName]=useState('');
+  const [password,setPassword]=useState('');
+  const [name,setName]=useState('');
+  const [mobileNumber,setMobileNumber]=useState('');
+  const [email,setEmail]=useState(''); 
+  const [age,setAge]=useState('');
+  const [gender,setGender]=useState('');
+  const handleSubmit=async (e)=>{
         e.preventDefault();
-        axios.post("http://localhost:3001/api/data",{username,password,name,mobileNumeber,email,age,gender})
-        .then(result=>console.log(result))
-        .catch(err=>console.log(err))
+        
+        try{
+
+          const response=await axios.post("http://localhost:2100/admin/create-user",{username,password,name,mobileNumber,email,age,gender})
+          if(response.status==201){
+            onUserCreated();
+           displayUser();
+            // navigate("/dashboard/page")
+          }else{
+            console.error('Failed to create user');
+          }
+        }catch (error) {
+          console.error('Error creating user:', error);
+        }      
+       
   }
 
   return(
     <>
         <div className='user-form'>      
-            <form >
+            <form onSubmit={handleSubmit}>
               <div className='details'>
                 <div className='elements'>
                   <label htmlFor="username">User Name:</label><br/>
@@ -134,7 +233,7 @@ const CreateUserForm=()=>{
                   </div>
                   <div className='elements'>
                   <label htmlFor="name">Mobile Number:</label><br/>
-                  <input type="text" id="mobilenumber" name="mobilenumber" value={mobileNumeber} placeholder='enter here' className='info' onChange={(e)=>setMobileNumber(e.target.value)} /><br />
+                  <input type="text" id="mobilenumber" name="mobilenumber" value={mobileNumber} placeholder='enter here' className='info' onChange={(e)=>setMobileNumber(e.target.value)} /><br />
                   </div> 
                   <div className='elements'>                                
                   <label htmlFor="email">Email:</label><br/>
@@ -147,12 +246,10 @@ const CreateUserForm=()=>{
                   <div className='elements'>
                   <label htmlFor="name">Gender:</label><br/>
                   <input type="text" id="gender" name="gender" placeholder='enter here' value={gender} className='info' onChange={(e)=>setGender(e.target.value)}/><br />
-                  </div><br/>
-                  
+                  </div><br/>                 
                   </div>
-                  <button className='submit-btn' type='submit' onSubmit={handleSubmit}>Submit</button>
-                    
-                                    
+                  <button className='submit-btn' type='submit'>Submit</button>
+                                                     
       </form>
     </div>
     </>
