@@ -125,7 +125,7 @@ function Reports() {
   };
   return (
     <>
-          <div className='Reports'>
+          <div className='Reports'>  
                 <div className='Drop-downs'>
                     <div className='mini'>
                         <label htmlFor="gender">Gender:</label><br/>
