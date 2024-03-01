@@ -100,7 +100,7 @@ body{
 }
 .location-heading{
     position: relative;
-    z-index: 1;
+    z-index: 1; 
     margin-left: 2vw;
     font-size: 1.5vw;
     width: max-content;
@@ -143,11 +143,13 @@ body{
     font-weight: bold;
     margin-bottom: 0vw;
     margin-top: 1vw;
+    color: #4156A5;
 }
 .profile-mail{
     font-size: 1.2vw;
     font-weight: bold;
     margin-top: 0vw;
+    color: #4156A5;
 }
 .profile-container{
     display: flex;
@@ -158,8 +160,21 @@ body{
     justify-content: space-between;
     margin-right: 2vw;
 }
-
-
+.profile-constituency{
+    font-size: 2vw;
+    font-weight: 700;
+    margin-left: 1vw;
+    color: #4156A5;
+}
+.picon{
+    color: #f71616;
+    /* font-size: 2vw; */
+}
+.ipara{
+    font-size: 1.5vw;
+    color: #f71616;
+    font-weight: 700;
+}
 @media (max-width:768px){
     body{
         overflow-y: scroll;
@@ -173,12 +188,15 @@ body{
     .location-heading{
         font-size: 3vw;
     }
+    .profile-constituency{
+        font-size: 5.5vw;
+    }
     .profile-name{
-        font-size: 2.5vw;
+        font-size: 4vw;
         margin-top: 4.5vw;
     }
     .profile-mail{
-        font-size: 2vw;
+        font-size: 3.5vw;
     }
     .profile-line{
         height: 7vw;
@@ -195,5 +213,11 @@ body{
     .nav-item{
         font-size: 3vw;
         margin-right: 3vw;
+    }
+    .picon{
+        font-size: 4vw;
+    }
+    .ipara{
+        font-size: 4vw;
     }
 }

@@ -22,11 +22,10 @@ function App() {
 
           <Route path='users' element={<Users/>}/>         
           <Route path='allocated' element={<Booths/>}/> 
-          <Route path='allocated/boothlist' element={<BoothList/>}/>         
+          
           <Route path='reports' element={<Reports/>}/>
-          <Route path='users' element={<Users/>}/>
-          <Route path='allocated' element={<Booths/>}/>
-          <Route path='allocated/boothlist' element={<BoothList/>}/> 
+        
+          <Route path='allocated/boothlist/:id/:name/:mobile' element={<BoothList/>}/> 
 
           <Route path='page' element={<Page/>}/>
           </Route>
