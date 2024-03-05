@@ -5,6 +5,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import './Data.css'
 
 const DataTable = () => {
+  
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState('');
@@ -14,7 +15,7 @@ const DataTable = () => {
 
   const fetchData = async () => {
     try {
-      // Replace 'your-api-endpoint' with the actual API endpoint
+      
       const response = await fetch('https://admin-api.stepnext.com/admin/get-all-data');
       const result = await response.json();
       setData(result);
@@ -115,7 +116,7 @@ const DataTable = () => {
         columns={columns}
         dataSource={data}
         loading={loading}
-        rowKey={(record) => record.id} // Change 'id' to the actual key property of your data
+        rowKey={(record) => record.id}
         onChange={handleChange}
       />
     </>
