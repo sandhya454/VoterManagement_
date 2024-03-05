@@ -32,7 +32,7 @@ export default function Users() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:2100/admin/get-users', {
+      const response = await fetch('https://admin-api.stepnext.com/admin/get-users', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const UserList=()=>{
   
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:2100/admin/get-users',{
+        const response = await fetch('https://admin-api.stepnext.com/admin/get-users',{
           method:'GET',
           headers:{
             'Content-Type':'application/json'
@@ -91,7 +91,7 @@ const UserList=()=>{
       }
 
     
-    };
+};
    
  
 useEffect(()=>{
@@ -106,14 +106,14 @@ useEffect(()=>{
         let status="ACTIVE"
         if(Status==false){
 
-          status="INACTIVE"
+          status="DEACTIVE"
 
 
         }
 
         
 
-          const response =await fetch("http://localhost:2100/admin/user-status",{
+          const response =await fetch("https://admin-api.stepnext.com/admin/user-status",{
             method:"POST",
           headers:{
             "Content-Type":"application/json"
@@ -162,17 +162,17 @@ useEffect(()=>{
                     <>
                     <tr key={i.user_id}>
                      
-                      <td>{i.user_name}</td>
+                      <td>{i.username}</td>
                       <td>{i.password}</td>
-                      <td>{i.name}</td>
+                      <td>{i.Name}</td>
                       <td>{i.mobile_number}</td>
                       <td>{i.email}</td>
-                      <td>{i.age}</td>
-                      <td>{i.gender}</td>
+                      <td>{i.Age}</td>
+                      <td>{i.Gender}</td>
                       <td className='icon' ><Switch
       checkedChildren={<CheckOutlined />}
       unCheckedChildren={<CloseOutlined />}
-      value={(i.status==="ACTIVE")?true:false} onChange={(value)=>{updateStatus(value,i.user_id)}}
+      value={(i.Status==="ACTIVE")?true:false} onChange={(value)=>{updateStatus(value,i.user_id)}}
     /></td>
                       
                     </tr></>
@@ -190,20 +190,20 @@ const CreateUserForm=({onUserCreated,displayUser})=>{
   const navigate=useNavigate()
   const [username,setUserName]=useState('');
   const [password,setPassword]=useState('');
-  const [name,setName]=useState('');
-  const [mobileNumber,setMobileNumber]=useState('');
+  const [Name,setName]=useState('');
+  const [mobile_number,setMobileNumber]=useState('');
   const [email,setEmail]=useState(''); 
-  const [age,setAge]=useState('');
-  const [gender,setGender]=useState('');
+  const [Age,setAge]=useState('');
+  const [Gender,setGender]=useState('');
   const handleSubmit=async (e)=>{
         e.preventDefault();
         
         try{
 
-          const response=await axios.post("http://localhost:2100/admin/create-user",{username,password,name,mobileNumber,email,age,gender})
+          const response=await axios.post("https://admin-api.stepnext.com/admin/create-user",{username,password,Name,mobile_number,email,Age,Gender})
           if(response.status==201){
             onUserCreated();
-           displayUser();
+            displayUser();
             // navigate("/dashboard/page")
           }else{
             console.error('Failed to create user');
@@ -229,11 +229,11 @@ const CreateUserForm=({onUserCreated,displayUser})=>{
                   </div>
                   <div className='elements'>
                   <label htmlFor="name">Name:</label><br/>
-                  <input type="text" id="name" name="name"  value={name} placeholder='enter here' className='info' onChange={(e)=>setName(e.target.value)}/><br />
+                  <input type="text" id="name" name="name"  value={Name} placeholder='enter here' className='info' onChange={(e)=>setName(e.target.value)}/><br />
                   </div>
                   <div className='elements'>
                   <label htmlFor="name">Mobile Number:</label><br/>
-                  <input type="text" id="mobilenumber" name="mobilenumber" value={mobileNumber} placeholder='enter here' className='info' onChange={(e)=>setMobileNumber(e.target.value)} /><br />
+                  <input type="text" id="mobilenumber" name="mobilenumber" value={mobile_number} placeholder='enter here' className='info' onChange={(e)=>setMobileNumber(e.target.value)} /><br />
                   </div> 
                   <div className='elements'>                                
                   <label htmlFor="email">Email:</label><br/>
@@ -241,11 +241,11 @@ const CreateUserForm=({onUserCreated,displayUser})=>{
                   </div> 
                   <div className='elements'>
                   <label htmlFor="name">Age:</label><br/>
-                  <input type="number" id="age" name="age" placeholder='enter here' value={age}  className='info' onChange={(e)=>setAge(e.target.value)}/><br />
+                  <input type="number" id="age" name="age" placeholder='enter here' value={Age}  className='info' onChange={(e)=>setAge(e.target.value)}/><br />
                   </div>
                   <div className='elements'>
                   <label htmlFor="name">Gender:</label><br/>
-                  <input type="text" id="gender" name="gender" placeholder='enter here' value={gender} className='info' onChange={(e)=>setGender(e.target.value)}/><br />
+                  <input type="text" id="gender" name="gender" placeholder='enter here' value={Gender} className='info' onChange={(e)=>setGender(e.target.value)}/><br />
                   </div><br/>                 
                   </div>
                   <button className='submit-btn' type='submit'>Submit</button>

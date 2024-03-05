@@ -9,7 +9,7 @@ export default function Booths() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:2100/admin/get-users',{
+      const response = await fetch('https://admin-api.stepnext.com/admin/get-users',{
         method:'GET',
         headers:{
           'Content-Type':'application/json'
@@ -35,7 +35,7 @@ export default function Booths() {
 
   const getBooths = async () => {
     try {
-      const response = await fetch('http://localhost:2100/admin/get-allocated-booths',{
+      const response = await fetch('https://admin-api.stepnext.com/admin/get-allocated-booths',{
         method:'POST',
         headers:{
           'Content-Type':'application/json'
@@ -76,7 +76,7 @@ export default function Booths() {
                         <div className='cards'>
                         <div className='blue'></div>
                         <div className='date'>{i.date}</div>
-                        <div className='username'>{i.name}</div>
+                        <div className='username'>{i.Name}</div>
                         <div className='booths'><span>Booths</span><span className='num'>{boothCount.filter((booth)=>booth.user_id==i.user_id).length}</span></div>
                         <div className='mobileNumber'><span>Mobile Number</span><span className='cellNum'>{i.mobile_number}</span></div>
                         <button onClick={()=>{boothList(i.user_id,i.name,i.mobile_number)}}>+Allocate</button>

@@ -22,7 +22,7 @@ import { FaPowerOff } from "react-icons/fa";
     try{
       const token=Cookies.get('token')
       console.log(token,'token')
-      const response=await fetch('http://localhost:2100/admin/get-admin',{
+      const response=await fetch('https://admin-api.stepnext.com/admin/get-admin',{
         method:'POST',       
         headers:{
           'authorization':`Bearer ${token}`,
@@ -69,7 +69,7 @@ import { FaPowerOff } from "react-icons/fa";
             <div className="dashboard-nav-items">
               <p className={`nav-item ${selectedNavItem === "/dashboard/users" ? "selected" : ""}`} onClick={() => handleNavItemClick("/dashboard/users")}>Users</p>
               <p className={`nav-item ${selectedNavItem === "/dashboard/allocated" ? "selected" : ""}`} onClick={() => handleNavItemClick("/dashboard/allocated")}>Allocated Booths</p>
-              <p className={`nav-item ${selectedNavItem === "/dashboard/reports" ? "selected" : ""}`} onClick={() => handleNavItemClick("/dashboard/reports")}>Data</p>
+              <p className={`nav-item ${selectedNavItem === "/reports" ? "selected" : ""}`} onClick={() => handleNavItemClick("/reports")}>Data</p>
             </div>
           </div>
           <div className="line-container">

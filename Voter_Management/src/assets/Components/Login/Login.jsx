@@ -11,7 +11,7 @@ export default function Login() {
 
   const handleLogin = async() => {
     try{
-        const response=await fetch("http://localhost:2100/admin/admin-login ",{
+        const response=await fetch("https://admin-api.stepnext.com/admin/admin-login ",{
             method:"POST",
             headers:{
                 'Content-Type':"application/json"

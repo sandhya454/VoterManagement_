@@ -25,7 +25,7 @@ const booths=()=>{
 }
 const getAllocateBooths = async () => {
   try {
-    const response = await fetch('http://localhost:2100/admin/get-allocated-booths',{
+    const response = await fetch('https://admin-api.stepnext.com/admin/get-allocated-booths',{
       method:'POST',
       headers:{
         'Content-Type':'application/json'
@@ -48,7 +48,7 @@ const getAllocateBooths = async () => {
 
 const getBooths=async()=>{
   try {
-    const response = await fetch('http://localhost:2100/admin/get-booths');
+    const response = await fetch('https://admin-api.stepnext.com/admin/get-booths');
     console.log('API Response:', response); 
     if(response.ok){
       const responseData=await response.json()
@@ -81,7 +81,7 @@ const createAllocateBooth=async()=>{
       const mobile_number=params.mobile_number
       const crBooth={booth_no,user_id,name,mobile_number,village,mandal,area,constituency,ward}
     
-      const response = await fetch('http://localhost:2100/admin/create-allocated-booth',{
+      const response = await fetch('https://admin-api.stepnext.com/admin/create-allocated-booth',{
         method:'POST',
         headers:{
           'Content-Type':'application/json'
