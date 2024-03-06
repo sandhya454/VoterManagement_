@@ -70,7 +70,7 @@ const createAllocateBooth=async()=>{
   
     try {
       const booth_no=selectedBooth
-      const data=totalBooths.filter((booth)=>booth.Booth==booth_no)[0]   
+      const data=totalBooths.filter((booth)=>booth.Booth==selectedBooth)[0]   
       const ward=data.Wards
       const mandal=data.Mandal
       const area = data.Area
@@ -78,8 +78,9 @@ const createAllocateBooth=async()=>{
       const village=data.Village
       const user_id=params.id
       const name=params.name
-      const mobile_number=params.mobile_number
-      const crBooth={booth_no,user_id,name,mobile_number,village,mandal,area,constituency,ward}
+      const mobile_number=params.mobile
+      const Surveyer=params.mobile
+      const crBooth={booth_no,user_id,name,mobile_number,Surveyer,village,mandal,area,constituency,ward}
     
       const response = await fetch('https://admin-api.stepnext.com/admin/create-allocated-booth',{
         method:'POST',
@@ -116,7 +117,7 @@ const handleSelectedBooths=(booth)=>{
         <div className='booth-list'>
               <h2 onClick={booths}>Constituency</h2>             
               <div className='booths'>
-              {showBoothList?<ShowBooths booth={booth} id={params.id}/>:<CreateBooth booths={totalBooths} handleSelectedBooths={handleSelectedBooths}/>}              
+              {showBoothList?<ShowBooths booth={booth} id={params.mobile}/>:<CreateBooth booths={totalBooths} handleSelectedBooths={handleSelectedBooths}/>}              
               {boothVisible && <div className='additional-booth' onClick={createBoothForm}>
                       <span ><CiCirclePlus /></span>
                           <p>Create Booth</p>
@@ -133,13 +134,13 @@ const ShowBooths=({booth,id})=>{
   console.log("User ID:", id);
   return(
     <>                
-                    {booth.filter((b)=>b.user_id==id).map((i)=>{
+                    {booth.filter((b)=>b.Surveyer==id).map((i)=>{
                       return(
                         <>
                           <div key={i.id} className='list'>                            
-                                  <h3>{i.booth_no}</h3>
+                                  <h3>{i.Booth}</h3>
                                   <span><p className='icon'><FaTrash/></p></span>
-                                  <p>Ward:{i.ward}</p>                                  
+                                  <p>Ward:{i.Wards}</p>                                  
                           </div>
                         </>
                       )

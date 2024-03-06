@@ -45,7 +45,7 @@ export default function Booths() {
       console.log('API Response:', response); 
       if(response.ok){
         const responseData=await response.json()
-        console.log(responseData,'ALLOCAtED111');
+        console.log(responseData,'ALLOCATED111');
         setBoothCount(responseData  )       
       }
       else{
@@ -77,9 +77,9 @@ export default function Booths() {
                         <div className='blue'></div>
                         <div className='date'>{i.date}</div>
                         <div className='username'>{i.Name}</div>
-                        <div className='booths'><span>Booths</span><span className='num'>{boothCount.filter((booth)=>booth.user_id==i.user_id).length}</span></div>
+                        <div className='booths'><span>Booths</span><span className='num'>{boothCount.filter((booth)=>booth.Surveyer==i.username).length}</span></div>
                         <div className='mobileNumber'><span>Mobile Number</span><span className='cellNum'>{i.mobile_number}</span></div>
-                        <button onClick={()=>{boothList(i.user_id,i.name,i.mobile_number)}}>+Allocate</button>
+                        <button onClick={()=>{boothList(i.user_id,i.Name,i.username)}}>+Allocate</button>
                         </div>
                         </>
                       )
