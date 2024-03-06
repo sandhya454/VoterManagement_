@@ -3,6 +3,7 @@ import './Reports.scss';
 import { FiSearch } from "react-icons/fi";
 import * as XLSX from "xlsx";
 import { FaFileExport } from 'react-icons/fa';
+import TableComponent from './TableComponent';
 
 function Reports() {
   
@@ -21,9 +22,9 @@ function Reports() {
   const [dataCount,setDataCount]=useState(0);
 
   const filterData = () => {
-    console.log('Selected Surveyor:', selectedSurveyor);
+   
 
-    let filteredData = originalData.slice();
+    let filteredData = originalData;
 
     if (selectedGender) {
       filteredData = filteredData.filter(item => item.Gender === selectedGender);
@@ -50,18 +51,25 @@ function Reports() {
       filteredData=filteredData.filter(item=> {return String(item.Wards) === String(selectWard)});
     }
     if(selectSurveyStatus === "completed"){
-      filteredData=filteredData.filter(item=>item.Survey===1);
+      filteredData=filteredData.filter(item=>item.Survey==1);
     }else if(selectSurveyStatus === "incompleted"){
-      filteredData=filteredData.filter(item=>item.Survey===0)
+      filteredData=filteredData.filter(item=>item.Survey==0)
     }
     if(searchTerm){
-      filteredData = filteredData.filter(item =>
-        String(item.Epic).toLowerCase().includes(searchTerm.toLowerCase())||
-        String(item.Name).toLowerCase().includes(searchTerm.toLowerCase())||
-        String(item.Father_Name).toLowerCase().includes(searchTerm.toLowerCase())||
-        String(item.Surname).toLowerCase().includes(searchTerm.toLowerCase())||
-        String(item.House_Number).toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      filteredData = filteredData.filter(item => {
+        const epicMatch = String(item.Epic).toLowerCase().includes(searchTerm.toLowerCase());
+        
+        const fatherNameMatch = String(item.Father_Name).toLowerCase().includes(searchTerm.toLowerCase());
+        const surnameMatch = String(item.Surname).toLowerCase().includes(searchTerm.toLowerCase());
+        const houseNumberMatch = String(item.House_Number).toLowerCase().includes(searchTerm.toLowerCase());
+        const nameMatch = String(item.Name).toLowerCase().includes(searchTerm.toLowerCase());
+    
+        console.log(`Item: ${JSON.stringify(item)}, Search Term: ${searchTerm}`);
+        console.log(`Matches: Epic - ${epicMatch}, Name - ${nameMatch}, Father Name - ${fatherNameMatch}, Surname - ${surnameMatch}, House Number - ${houseNumberMatch}`);
+    
+        return epicMatch || nameMatch || fatherNameMatch || surnameMatch || houseNumberMatch;
+    });
+    
     }
     setDataCount(filteredData.length)
     setData(filteredData);
@@ -69,32 +77,43 @@ function Reports() {
 
   const fetchData=async()=>{
     try{
-      const response = await fetch('http://localhost:2100/admin/get-all-data')
+      const response = await fetch('https://admin-api.stepnext.com/admin/get-all-data')
       if(response.ok){
         const data=await response.json()
-      setOriginalData(data.slice(0,1000))
-        setData(data.slice(0,1000))
+        const data1=data
+        console.log(data,'kkk')
+       
+        setOriginalData(data1)
+        setData(data1)
+
+        
+        
 
       }
       else{
-        alert('no datat')
+        alert('no data')
       }
     
     }
     catch(error){
       console.error(error,'errro in fetching all data')
     }
+    return data
   }
 
+  useEffect(()=>{
+
+    fetchData()
+
+  },[])
+  
 
 
   useEffect(() => {
-    filterData();
+     filterData();
    
   }, [selectedGender, selectedBooth, selectedAge, selectedCaste, selectedColor, selectedSurveyor,selectSurveyedOn, selectWard,selectSurveyStatus,searchTerm, originalData]);
-  useEffect(()=>{
-    fetchData()
-  },[])
+  
   const getUniqueValues = (key) => {
     let uniqueValues = [...new Set(data.map((item) => item[key]))];
     if (key === 'Age' || key==="Booth" || key==="Wards") {
@@ -104,7 +123,7 @@ function Reports() {
     } 
 
     if(key === "Surveyed_on"){
-      const uniqueDates = [...new Set(uniqueValues.map(value => value.slice(0, 10)))];
+      const uniqueDates = [...new Set(uniqueValues.map(value => value))];
 
       return uniqueDates.map((date)=>(
       <option key={date} value={date}>{date}
@@ -126,7 +145,11 @@ function Reports() {
   return (
     <>
           <div className='Reports'>  
-                <div className='Drop-downs'>
+
+          <TableComponent data={data}/>
+
+          
+                  {/* <div className='Drop-downs'>
                     <div className='mini'>
                         <label htmlFor="gender">Gender:</label><br/>
                           <select name="gender" id="gender" onChange={(e) => setSelectedGender(e.target.value)}>
@@ -184,7 +207,8 @@ function Reports() {
                             }
                         
                       </select>
-                    </div>
+                    </div> 
+
                     <div className='mini'>
                       <label htmlFor="surveyor">Surveyor:</label><br/>
                       <select name="surveyor" id="surveyor" onChange={(e)=>{setSelectedSurveyor(e.target.value),console.log(e.target.value,"selected surveyor");}}>
@@ -268,9 +292,9 @@ function Reports() {
                                             <th>survey_date</th>
                           </thead>
                           <tbody>
-                          {data.map((item, index) => (
+                          {data.slice(1,1000).map((item, index) => (
                                           <tr key={index}>
-                                            {/* <td>{index + 1}</td> */}
+                                            <td>{index + 1}</td> 
                                             <td>{item.Voter_S_no}</td>
                                             <td>{item.Epic}</td>
                                             <td>{item.Name}</td>
@@ -313,7 +337,7 @@ function Reports() {
                           </tbody>
                   </table>
 
-                </div>
+                          </div>  */}
             </div> 
     </>
   )

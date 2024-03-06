@@ -9,20 +9,23 @@ import Reports from './assets/Components/MainPage/Reports.jsx/Reports'
 
 import BoothList from './assets/Components/MainPage/Booths/BoothList'
 import Page from './assets/Components/MainPage/Page/page'
+import DataTable from './assets/Components/data/Data'
 
 
 function App() {
+  
   return (
     <>
     <Router>
       <Routes>
         <Route path='/' element={<Login/>}/>
+        <Route path='reports' element={<DataTable/>}/>
         <Route path='dashboard' element={<Dashboard/>}>
 
           <Route path='users' element={<Users/>}/>         
           <Route path='allocated' element={<Booths/>}/> 
           
-          <Route path='reports' element={<Reports/>}/>
+          
         
           <Route path='allocated/boothlist/:id/:name/:mobile' element={<BoothList/>}/> 
 

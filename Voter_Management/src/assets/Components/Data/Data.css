@@ -1,0 +1,32 @@
+.MainContTable{
+    width: 90vw;
+    margin-left: 5%;
+    height:70vh ;
+    overflow: scroll;
+}
+.CountsDiv{
+    width: 90%;
+    display:flex;
+    justify-content: space-between;
+    padding:1% 5%;
+}
+
+.FiltersDiv{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+    
+
+}
+
+.SelectedDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    gap:10%;
+   
+   
+}

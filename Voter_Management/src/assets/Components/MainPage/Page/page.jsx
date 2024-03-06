@@ -10,7 +10,7 @@ function Page(){
     const [allocateBooth,setAllocateBooth]=useState([]);
     const getUserDetails=async()=>{
         try{
-              const data= await fetch("http://localhost:2100/admin/get-users",{
+              const data= await fetch("https://admin-api.stepnext.com/admin/get-users",{
                 method:"GET",
                 headers:{
                   "Content-Type":"application/json"}
@@ -29,7 +29,7 @@ function Page(){
       }     
       const getTotalBooths=async()=>{
         try{
-            const totalBooths=await fetch("http://localhost:2100/admin/get-booths",{
+            const totalBooths=await fetch("https://admin-api.stepnext.com/admin/get-booths",{
                 method:"GET",
                 headers:{"Content-Type":"application/json"}
             })
@@ -49,7 +49,7 @@ function Page(){
 
       const getAllocateBooth=async ()=>{
         try{
-                const allocate= await fetch("http://localhost:2100/admin/get-allocated-booth",{
+                const allocate= await fetch("https://admin-api.stepnext.com/admin/get-allocated-booth",{
                     method:"GET",
                     headers:{"Content-Type":"application/json"}
                 });
