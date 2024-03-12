@@ -45,6 +45,7 @@
 }
 .WardsBoothCont{
     background-color: rgb(125, 195, 255);
+    color:black;
     display: flex;
     width: 35%;
     justify-content: space-between;

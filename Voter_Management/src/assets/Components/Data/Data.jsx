@@ -385,7 +385,7 @@ useEffect(()=>{
           >
             Search
           </Button>
-          <Button onClick={() =>{ handleReset(),clearFilters(),setSelectedKeys([]),handleSearch(selectedKeys, confirm, dataIndex)}} size="small" style={{ width: 90 }}>
+          <Button onClick={() =>{ handleReset(),clearFilters(),setSelectedKeys([]),handleSearch(selectedKeys,confirm,dataIndex)}} size="small" style={{ width: 90 }}>
             Reset
           </Button>
         </Space>
