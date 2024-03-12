@@ -14,7 +14,7 @@ const TableComponent = ({ data }) => {
         accessor: key,
         // Add filtering options if needed
       }));
-    },
+    }, 
     [data]
   );
 

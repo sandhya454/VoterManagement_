@@ -39,6 +39,7 @@ const DataTable = () => {
   
   useEffect(() => {
     localStorage.setItem('filters', JSON.stringify(Filters));
+    setLoading(true);
   }, [Filters]);
   
 
@@ -238,16 +239,18 @@ const showDrawer = () => {
 const onClose = () => {
   setOpen(false);
 };
-const onCancel = () => {
-  setFilters({	Wards:49})
+const onCancel = async() => {
+  // const defaultFilters={Wards:49}
+  setFilters({Wards:49});
+  // localStorage.setItem('filters', JSON.stringify(defaultFilters));
   Cookies.remove('Filters')
   setBooth(null)
   setArea(null)
   setMandal(null)
   setWard(null)
   setVillage(null)
-
   setOpen(false);
+  await fetchData()
   
 };
 
@@ -277,6 +280,7 @@ useEffect(()=>{
       setData(result);
       setOriginalData(result)
       setLoading(false);
+     
     } catch (error) {
       console.error('Error fetching data:', error);
       setLoading(false);
@@ -287,9 +291,6 @@ useEffect(()=>{
     fetchData()
     setIsloading(true)
   },[Filters])
-
- 
-
 
   const applyFilters=async()=>{
     console.log(Booth,Area,Ward,Village,Mandal,'hello')
@@ -312,8 +313,6 @@ useEffect(()=>{
         setFilters({Mandal:Mandal})
       }
       Cookies.set(Filters,'Filters')
-     
-
 
     }
     catch(error){
@@ -335,7 +334,7 @@ useEffect(()=>{
 
   const handleExport = () => {
     // Use filteredData if available, otherwise use the original data
-    const exportData = filteredData.length > 0 ? filteredData : filteredData;
+    const exportData = filteredData.length > 0 ? filteredData : data;
 
     exportToExcel(exportData, 'filtered_table_data.xlsx');
   };

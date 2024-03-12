@@ -22,7 +22,7 @@ function Reports() {
   const [dataCount,setDataCount]=useState(0);
 
   const filterData = () => {
-   
+    
 
     let filteredData = originalData;
 
