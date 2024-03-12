@@ -57,6 +57,7 @@ import { FaPowerOff } from "react-icons/fa";
   };
   const handleConfirmLogout = () => {
     setLogoutModalOpen(false);
+    localStorage.removeItem('filters')
     navigate("/");
   };
 

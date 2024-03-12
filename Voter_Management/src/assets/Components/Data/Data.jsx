@@ -39,6 +39,8 @@ const DataTable = () => {
   
   useEffect(() => {
     localStorage.setItem('filters', JSON.stringify(Filters));
+    setLoading(true)
+    
   }, [Filters]);
   
 
@@ -208,21 +210,43 @@ useEffect(()=>{
 },[details])
 
 const handleMandal=async(value)=>{
+  setArea(null)
+  setBooth(null)
+  setWard(null)
+  setVillage(null)
   setMandal(value)
  
 }
 const handleVillage=async(value)=>{
+  setArea(null)
+  setBooth(null)
+  setWard(null)
+ 
   setVillage(value)
   
 }
 const handleWards=async(value)=>{
+  setArea(null)
+  setBooth(null)
+ 
+  setVillage(null)
+  setMandal(null)
   setWard(value)
 }
 const hadleBooths=async(value)=>{
+  setArea(null)
+  
+ 
+  setVillage(null)
+  setMandal(null)
   setBooth(value)
   
 }
 const handleAreas=async(value)=>{
+ 
+  
+  setVillage(null)
+  setMandal(null)
   setArea(value)
 
 }
@@ -248,7 +272,8 @@ const onCancel = () => {
   setVillage(null)
 
   setOpen(false);
-  
+  handleReset()
+  handleSearch([],()=>{},'Name')
 };
 
 const getCount=async()=>{
@@ -335,7 +360,7 @@ useEffect(()=>{
 
   const handleExport = () => {
     // Use filteredData if available, otherwise use the original data
-    const exportData = filteredData.length > 0 ? filteredData : filteredData;
+    const exportData = filteredData.length > 0 ? filteredData : originalData;
 
     exportToExcel(exportData, 'filtered_table_data.xlsx');
   };
@@ -360,7 +385,7 @@ useEffect(()=>{
           >
             Search
           </Button>
-          <Button onClick={() => handleReset(clearFilters)} size="small" style={{ width: 90 }}>
+          <Button onClick={() =>{ handleReset(),clearFilters(),setSelectedKeys([]),handleSearch(selectedKeys, confirm, dataIndex)}} size="small" style={{ width: 90 }}>
             Reset
           </Button>
         </Space>
@@ -387,19 +412,23 @@ useEffect(()=>{
   });
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
+   
     confirm();
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
+    
   };
 
-  const handleReset = (clearFilters) => {
-    clearFilters();
+  const handleReset = () => {
+   
+    
     setSearchText('');
     setRecordsCount(0)
   
     setSearchedColumn(null);
     
     setData(originalData)
+    setFilteredData(originalData)
 
   };
 
@@ -418,11 +447,11 @@ useEffect(()=>{
 
     
 
-    console.log(filteredData,'filt')
-
+   
     setRecordsCount(filteredData.length)
 
     setFilteredData(filteredData)
+    setData(filteredData)
 
 
    
@@ -463,6 +492,9 @@ useEffect(()=>{
         
         </div>
       <div style={{ marginBottom: 16 }} className='FiltersDiv'>
+
+
+        <div className='MandalVillageCont'>
       <Select className='select'
         
         placeholder={'Select mandal'}
@@ -486,6 +518,9 @@ useEffect(()=>{
          options={Villages}
           onChange={handleVillage}
            value={Village}/>
+           </div>
+
+           <div className='WardsBoothCont'>
        <Select className='select'
         placeholder={'Select Ward'}
         showSearch
@@ -517,18 +552,9 @@ useEffect(()=>{
        options={Booths} 
        onChange={hadleBooths} 
        value={Booth}/>
-       <Select className='select' 
-       placeholder={'Select Area'} 
-       showSearch
-       optionFilterProp="children"
-      filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input)}
-      filterSort={(optionA, optionB) =>
-        (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
-      }
       
-       options={Areas} 
-       onChange={handleAreas} 
-       value={Area}/>
+
+       </div>
       
         
        
