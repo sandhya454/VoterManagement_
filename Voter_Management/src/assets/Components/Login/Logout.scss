@@ -28,14 +28,14 @@
         display: flex;
         justify-content: space-between;
         margin-top: 2vw;
+        
   
         button {
           padding: 0.9vw;
           cursor: pointer;
           border: none;
           border-radius: 0.5vw;
-          font-size: 1.5vw;
-  
+          font-size: 1.5vw;  
           &:first-child {
             background-color: #fc5151;
             color: white;

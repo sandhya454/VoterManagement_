@@ -19,10 +19,6 @@ const DataTable = () => {
   const [RecordsCount,setRecordsCount]=useState(0);
   const [filteredData,setFilteredData]=useState([])
 
-  
-
-
-
   const [columns1,setColumn]=useState('House_Number')
     
    
@@ -60,9 +56,7 @@ const DataTable = () => {
 
   const [SearchTerms,setSearchTerms]=useState(null)
  
-  
-  
-const getConstituencyDetails=async()=>{
+  const getConstituencyDetails=async()=>{
  
  
   try{
@@ -121,9 +115,6 @@ const getWards=async()=>{
    }
      
       const uniqueWards = [...new Set(currentData.map(obj => obj.Wards))];
-
-     
- 
       const convertedListWards = uniqueWards.map(ward => ({
           value: ward,
           label: ward,
