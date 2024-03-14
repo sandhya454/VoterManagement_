@@ -9,6 +9,15 @@ body{
     padding-top: 1vw;
     display: flex;
 }
+
+.picon,.ipara{
+    cursor: pointer;
+}
+
+.picon:hover,.ipara:hover{
+    color:green;
+}
+
 /* .color-circle-left-top-1{
     height: 15vw;
     width: 25%;
