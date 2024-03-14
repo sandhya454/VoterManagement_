@@ -62,6 +62,7 @@ import { FaPowerOff } from "react-icons/fa";
   };
 
     return (
+
     <div>
       <div>
         <div className="dashboard-main-container">
@@ -71,6 +72,7 @@ import { FaPowerOff } from "react-icons/fa";
               <p className={`nav-item ${selectedNavItem === "/dashboard/users" ? "selected" : ""}`} onClick={() => handleNavItemClick("/dashboard/users")}>Users</p>
               <p className={`nav-item ${selectedNavItem === "/dashboard/allocated" ? "selected" : ""}`} onClick={() => handleNavItemClick("/dashboard/allocated")}>Allocated Booths</p>
               <p className={`nav-item ${selectedNavItem === "/reports" ? "selected" : ""}`} onClick={() => handleNavItemClick("/reports")}>Data</p>
+              
             </div>
           </div>
           <div className="line-container">

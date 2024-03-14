@@ -23,11 +23,16 @@ export default function Login() {
         });
         if(response.ok){
                     const data= await response.json();
-                    const token=data.token
+                    const {token,access}=data.token
+                    
                     
                     Cookies.set('token',token)
+                    if(access=='super'){
 
-                    navigate('/dashboard');
+                     navigate('/dashboard');
+                    }else{
+                      navigate('admin-access-only')
+                    }
         }
         
         else {
@@ -47,10 +52,8 @@ export default function Login() {
       </div>
         <div className='basic'>      
             <form>
-                  <h3>Election</h3>
-                  <p>In publishing and graphic design, Lorem ipsum is a placeholder text<br/>
-                   commonly used to demonstrate the visual form of a document or a<br/>
-                typeface without relying on meaningful content.</p>
+                  <h3>Survey Management</h3>
+                  <p>Login to the Voter survey management app, by entering your login credentials.</p>
                 <div className='form-input'>
                      <input type="text" value={adminName} onChange={(e) => setAdminName(e.target.value)} placeholder='User Name' className='input'/>
                 </div>                
