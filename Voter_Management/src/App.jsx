@@ -11,6 +11,13 @@ import Reports from './assets/Components/MainPage/Reports.jsx/Reports'
 import BoothList from './assets/Components/MainPage/Booths/BoothList'
 import Page from './assets/Components/MainPage/Page/page'
 import DataTable from './assets/Components/data/Data'
+import AdminDashboard from './assets/Components/Admin/AdminDashboard'
+import DisplayUsers from './assets/Components/Admin/DisplayUsers';
+import DisplayMandals from './assets/Components/Admin/DisplayMandals'
+import DisplayVillages from './assets/Components/Admin/DisplayVillages';
+import DisplayWards from './assets/Components/Admin/DispalyWards';
+import DisplayBooths from './assets/Components/Admin/DisplayBooths';
+import SurveyDetails from './assets/Components/Admin/SurveyDetails'
 
 
 function App() {
@@ -21,7 +28,18 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='reports' element={<DataTable/>}/>
-        <Route path='admin-access-only' element={<Admin/>}></Route>
+        {/* Admin Access Routes */}
+        <Route path='admin-access-only' element={<Admin/>}>
+        <Route path='admin-dashboard' element={<AdminDashboard/>}/>
+        <Route path='display-users' element={<DisplayUsers/>}/>
+        <Route path='display-mandals' element={<DisplayMandals/>}/>
+        <Route path="display-villages" element={<DisplayVillages/>}/>
+        <Route path="display-wards" element={<DisplayWards/>}/>
+        <Route path="display-booths" element={<DisplayBooths/>}/>
+        <Route path="total-surveys" element={<SurveyDetails/>}/>
+        
+        </Route>
+      
         <Route path='dashboard' element={<Dashboard/>}>
         
 

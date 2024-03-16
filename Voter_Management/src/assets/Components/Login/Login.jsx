@@ -31,7 +31,7 @@ export default function Login() {
 
                      navigate('/dashboard');
                     }else{
-                      navigate('admin-access-only')
+                      navigate('admin-access-only/admin-dashboard')
                     }
         }
         
