@@ -53,3 +53,24 @@
 .Mandals .mandal-table table tbody tr td{
     font-size: 1.5vw;
 }
+@media only screen and (max-width:765px) {
+    .Mandals{
+        width: 100vw;
+        height: 58vh;
+    }
+    .Mandals .Mandals-Details h3{
+        font-size: 4.5vw;
+    }
+    .Mandals .mandal-table{
+        height: 58vh;
+    }
+    .Mandals .mandal-table table thead{
+        font-size: 4vw;
+    }
+    .Mandals .mandal-table table tbody tr{
+        height: 5vh;
+    }
+    .Mandals .mandal-table table tbody tr td{
+        font-size: 4vw;
+    }
+}

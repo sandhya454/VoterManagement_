@@ -53,4 +53,34 @@
 .Users-Display .user-table table tbody tr td{
     font-size: 1.5vw;
 }
+@media only screen and (max-width:765px) {
+    .Users-Display{
+        width: 100vw;
+        height: 58vh;
+        overflow: scroll;
+       
+    }
+    .Users-Display .user-details h3{
+        font-size: 4.5vw;
+    }
 
+   
+    .Users-Display  .user-table{
+        width: 198vw;
+        height: 58vh;
+        overflow:scroll;;
+       
+    }
+    .Users-Display .user-table table{
+        width:198vw;
+        overflow-x: scroll;
+        
+    }
+    .Users-Display .user-table table thead{
+        font-size: 4vw;
+    }
+  
+    .Users-Display .user-table table tbody tr td{
+        font-size: 4vw;
+    }
+}

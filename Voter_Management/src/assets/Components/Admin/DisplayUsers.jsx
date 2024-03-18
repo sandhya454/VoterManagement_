@@ -49,6 +49,8 @@ export default function DisplayUsers() {
                 <tr>
                       <th>SN.NO</th>
                       <th>Name</th>
+                      <th>User_Name</th>
+                      <th>Password</th>
                       <th>Mobile_Number</th>
                     </tr>
                 </thead>
@@ -61,6 +63,8 @@ export default function DisplayUsers() {
                         <tr key={i}>
                           <td>{i.user_id}</td>
                           <td>{i.Name}</td>
+                          <td>{i.username}</td>
+                          <td>{i.password}</td>
                           <td>{i.mobile_number}</td>
                         </tr>
                         </>

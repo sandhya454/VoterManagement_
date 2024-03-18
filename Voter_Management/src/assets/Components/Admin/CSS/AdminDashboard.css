@@ -41,13 +41,13 @@
 }
 @media only screen and (max-width:765px)  {
     .details{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        display: grid;
+      grid-template-columns: auto auto;
+      
     }
     .box{
-        width: 50vw;
+        font-size: 5vw;
+        width: 45vw;
         height: 20vw;
         margin: 1vw;
     }
